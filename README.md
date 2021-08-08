@@ -1,4 +1,5 @@
-# generator-vuex [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-vuex [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+
 > Create Vuex modules
 
 ## Installation
@@ -16,17 +17,26 @@ Then generate your new project:
 yo vuex
 ```
 
+Use sub-generators!
+
+```bash
+yo vuex:module
+yo vuex:add-action
+yo vuex:add-mutation
+yo vuex:add-getter
+yo vuex:add-model
+```
+
 ## Getting To Know Yeoman
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+- Yeoman has a heart of gold.
+- Yeoman is a person with feelings and opinions, but is very easy to work with.
+- Yeoman can be too opinionated at times but is easily convinced not to be.
+- Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ## License
 
 ISC © [Josh Walters]()
-
 
 [npm-image]: https://badge.fury.io/js/generator-vuex.svg
 [npm-url]: https://npmjs.org/package/generator-vuex
