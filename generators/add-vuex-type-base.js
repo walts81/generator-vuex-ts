@@ -3,9 +3,9 @@ const GeneratorBase = require('./generator-base');
 const path = require('path');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const setNames = require('./set-names-helper');
-const updateTypes = require('./update-types-helper');
-const updateImpl = require('./update-impl-helper');
+const setNames = require('./helpers/set-names-helper');
+const updateTypes = require('./helpers/file-writer-helpers/update-types-helper');
+const updateImpl = require('./helpers/file-writer-helpers/update-impl-helper');
 
 module.exports = class extends GeneratorBase {
   constructor(type, args, options) {

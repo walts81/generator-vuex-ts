@@ -1,6 +1,7 @@
-const BaseGenerator = require('../add-helper');
+const path = require('path');
+const GeneratorBase = require('../add-vuex-type-base');
 
-module.exports = class extends BaseGenerator {
+module.exports = class extends GeneratorBase {
   constructor(args, options) {
     super('model', args, options);
   }
@@ -12,8 +13,13 @@ module.exports = class extends BaseGenerator {
   writing() {
     this.conflicter.force = true;
     const props = this.props;
-    this.fs.copyTpl(this.templatePath(`${this.type}.ts`), this.destinationPath(`${props.nameSlug}.ts`), props);
-    const temp = this.destinationPath('index.ts');
+    const root = props.baseDir;
+    this.fs.copyTpl(
+      this.templatePath(`${this.type}.ts`),
+      this.destinationPath(path.join(root, `${props.nameSlug}.ts`)),
+      props
+    );
+    const temp = this.destinationPath(path.join(root, 'index.ts'));
     this.fs.copy(temp, temp, {
       process: function(content) {
         const str = content.toString();

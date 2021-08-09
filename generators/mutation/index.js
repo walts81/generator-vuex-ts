@@ -1,7 +1,7 @@
 'use strict';
-const BaseGenerator = require('../add-helper');
+const GeneratorBase = require('../add-vuex-type-base');
 
-module.exports = class extends BaseGenerator {
+module.exports = class extends GeneratorBase {
   constructor(args, options) {
     super('mutation', args, options);
   }

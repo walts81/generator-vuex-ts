@@ -1,5 +1,5 @@
 const path = require('path');
-const updateHelpers = require('../update-helpers');
+const updateHelpers = require('../helpers/file-writer-helpers/update-helpers');
 
 module.exports = (fs, destinationPath, props) => {
   const temp = path.join(destinationPath, `root-state.ts`);
