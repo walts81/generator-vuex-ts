@@ -16,6 +16,7 @@ export const createStore = (startingState?: RootState) => {
   if (!!startingState) {
     storeAccess.store.replaceState(startingState);
   }
+  return storeAccess.store;
 };
 
 export const updateStore = (state: RootState) => {
@@ -25,4 +26,5 @@ export const updateStore = (state: RootState) => {
 
   const stateToUse = state || getDefaultRootState();
   storeAccess.store.replaceState(stateToUse);
+  return storeAccess.store;
 };
