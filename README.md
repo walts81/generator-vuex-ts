@@ -21,10 +21,10 @@ Use sub-generators!
 
 ```bash
 yo vuex:module
-yo vuex:add-action
-yo vuex:add-mutation
-yo vuex:add-getter
-yo vuex:add-model
+yo vuex:action
+yo vuex:mutation
+yo vuex:getter
+yo vuex:model
 ```
 
 ## Getting To Know Yeoman
