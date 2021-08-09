@@ -1,7 +1,7 @@
 {
-  "name": "generator-vuex",
+  "name": "generator-vuex-ts",
   "version": "1.0.1",
-  "description": "Create Vuex modules",
+  "description": "Create Vuex modules using TypeScript",
   "homepage": "",
   "author": {
     "name": "Josh Walters",
@@ -62,6 +62,6 @@
     "pretest": "eslint .",
     "test": "jest"
   },
-  "repository": "walts81/generator-vuex",
+  "repository": "walts81/generator-vuex-ts",
   "license": "ISC"
 }

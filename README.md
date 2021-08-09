@@ -1,30 +1,30 @@
-# generator-vuex [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+# generator-vuex-ts [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-> Create Vuex modules
+> Create Vuex modules using TypeScript
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-vuex using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-vuex-ts using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-vuex
+npm install -g generator-vuex-ts
 ```
 
 Then generate your new project:
 
 ```bash
-yo vuex
+yo vuex-ts
 ```
 
 Use sub-generators!
 
 ```bash
-yo vuex:module
-yo vuex:action
-yo vuex:mutation
-yo vuex:getter
-yo vuex:model
+yo vuex-ts:module
+yo vuex-ts:action
+yo vuex-ts:mutation
+yo vuex-ts:getter
+yo vuex-ts:model
 ```
 
 ## Getting To Know Yeoman
@@ -38,9 +38,9 @@ yo vuex:model
 
 ISC © [Josh Walters]()
 
-[npm-image]: https://badge.fury.io/js/generator-vuex.svg
-[npm-url]: https://npmjs.org/package/generator-vuex
-[travis-image]: https://travis-ci.com/walts81/generator-vuex.svg?branch=master
-[travis-url]: https://travis-ci.com/walts81/generator-vuex
-[daviddm-image]: https://david-dm.org/walts81/generator-vuex.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/walts81/generator-vuex
+[npm-image]: https://badge.fury.io/js/generator-vuex-ts.svg
+[npm-url]: https://npmjs.org/package/generator-vuex-ts
+[travis-image]: https://travis-ci.com/walts81/generator-vuex-ts.svg?branch=master
+[travis-url]: https://travis-ci.com/walts81/generator-vuex-ts
+[daviddm-image]: https://david-dm.org/walts81/generator-vuex-ts.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/walts81/generator-vuex-ts
