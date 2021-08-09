@@ -55,7 +55,7 @@ module.exports = class extends GeneratorBase {
       this.destinationPath(path.join(root, `${this.props.nameSlug}.ts`)),
       this.props
     );
-    updateTypes(this.fs, this.destinationPath(root), this.props);
+    updateTypes(this.fs, this.destinationPath(root), this.props, this.type);
     updateImpl(this.fs, this.destinationPath(root), this.props, this.type);
   }
 };

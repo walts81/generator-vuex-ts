@@ -1,14 +1,17 @@
-import { createStore as vuexCreateStore } from 'vuex';
+<% if (vuexVersion == '4') { %>import { createStore as vuexCreateStore } from 'vuex';<% } else { %>import Vue from 'vue';
+import Vuex from 'vuex';<% } %>
 import { modules } from './modules';
 import { getDefaultRootState, RootState } from './root-state';
 import { storeAccess } from './store-access';
-
+<% if (vuexVersion == '3') { %>
+Vue.use(Vuex);
+<% } %>
 export const createStore = (startingState?: RootState) => {
   if (storeAccess.store !== null) {
     throw new Error('Store already created');
   }
 
-  storeAccess.store = vuexCreateStore({
+  storeAccess.store = <% if (vuexVersion == '4') { %>vuexCreateStore({<% } else { %>new Vuex.Store({<% } %>
     state: getDefaultRootState(),
     modules,
   });

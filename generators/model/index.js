@@ -13,7 +13,7 @@ module.exports = class extends GeneratorBase {
   writing() {
     this.conflicter.force = true;
     const props = this.props;
-    const root = props.baseDir;
+    const root = path.join(props.baseDir, props.moduleNameSlug, 'models');
     this.fs.copyTpl(
       this.templatePath(`${this.type}.ts`),
       this.destinationPath(path.join(root, `${props.nameSlug}.ts`)),

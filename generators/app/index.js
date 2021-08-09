@@ -11,12 +11,12 @@ module.exports = class extends GeneratorBase {
   prompting() {
     this.log(yosay(`Welcome to the awe-inspiring ${chalk.red('generator-vuex')} generator!`));
 
-    return this.doPrompt([]).then(props => {
+    return this.doPrompt([], true).then(props => {
       this.props = props;
     });
   }
 
   writing() {
-    this.fs.copy(this.templatePath('store/'), this.destinationPath(this.props.baseDir));
+    this.fs.copyTpl(this.templatePath('store/'), this.destinationPath(this.props.baseDir), this.props);
   }
 };

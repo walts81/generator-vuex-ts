@@ -1,8 +1,6 @@
 import setAppBusy from './set-app-busy';
 import { actionTypes } from './_types';
 
-const actions = {
+export const actions = {
   [actionTypes.setAppBusy]: setAppBusy,
 };
-
-export { actionTypes, actions };

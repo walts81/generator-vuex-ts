@@ -4,14 +4,14 @@ const dirInquirerPlugin = require('inquirer-directory');
 const directoryPropType = 'directory';
 const baseDirPropName = 'baseDir';
 const modulePropName = 'modules';
+const versionPropName = 'vuexVersion';
 
-const getUpdatedPrompts = (prompts, baseDir) => {
+const getUpdatedPrompts = (prompts, version, baseDir, isAppGen) => {
   const p = !!prompts ? [...prompts] : [];
-  const message =
-    p.length === 0
-      ? `Where would you like your Vuex store directory to be located?`
-      : `Where is your Vuex store located?`;
-  const newPrompt = {
+  const message = isAppGen
+    ? `Where would you like your Vuex store directory to be located?`
+    : `Where is your Vuex store located?`;
+  const locationPrompt = {
     type: directoryPropType,
     name: baseDirPropName,
     message,
@@ -19,7 +19,17 @@ const getUpdatedPrompts = (prompts, baseDir) => {
   };
 
   if (!baseDir) {
-    p.unshift(newPrompt);
+    p.unshift(locationPrompt);
+  }
+
+  if (isAppGen && !version) {
+    p.unshift({
+      type: 'list',
+      name: versionPropName,
+      message: 'What version of Vuex are you using?',
+      choices: ['3', '4'],
+      default: '4',
+    });
   }
   return p;
 };
@@ -38,18 +48,22 @@ module.exports = class extends Generator {
     this.modules = modules;
   }
 
-  doPrompt(prompts) {
+  doPrompt(prompts, isAppGen) {
     let baseDir = this.config.get(baseDirPropName);
-    const updatedPrompts = getUpdatedPrompts(prompts, baseDir);
+    let version = this.config.get(versionPropName);
+    const updatedPrompts = getUpdatedPrompts(prompts, version, baseDir, isAppGen);
     return this.prompt(updatedPrompts).then(props => {
       if (!baseDir) baseDir = props[baseDirPropName];
+      if (!version) version = props[versionPropName];
 
       const storeDirNames = ['store', 'vuex', 'vuex-store'];
       if (storeDirNames.every(x => !baseDir.endsWith(x) && !baseDir.endsWith(x + '/'))) {
         baseDir = path.join(baseDir, 'store');
       }
       props[baseDirPropName] = baseDir;
+      props[versionPropName] = version;
       this.config.set(baseDirPropName, baseDir);
+      this.config.set(versionPropName, version);
       return props;
     });
   }

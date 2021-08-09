@@ -1,6 +1,7 @@
 const path = require('path');
+const nameHelpers = require('../get-updated-getter-name');
 
-module.exports = (fs, destinationPath, props) => {
+module.exports = (fs, destinationPath, props, type) => {
   const temp = path.join(destinationPath, `_types.ts`);
   fs.copy(temp, temp, {
     process: function(content) {
@@ -12,7 +13,13 @@ module.exports = (fs, destinationPath, props) => {
       } else {
         ix1 = str.lastIndexOf('`,') + 2;
       }
-      let result = str.substring(0, ix1) + `\n  ${props.nameCamel}: \`$\{prefix}${props.nameSnake}\`,`;
+      let propName = props.nameCamel;
+      let propValue = props.nameSnake;
+      if (type === 'getter') {
+        propName = nameHelpers.getNameCamel(propName);
+        propValue = nameHelpers.getNameSnake(propValue);
+      }
+      let result = str.substring(0, ix1) + `\n  ${propName}: \`$\{prefix}${propValue}\`,`;
       if (isFirst) result += '\n';
       result += str.substr(ix1);
       return result;

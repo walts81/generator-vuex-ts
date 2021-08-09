@@ -1,7 +1,7 @@
 import { ActionContext } from '../../action-context';
 import { AppState } from '../state';
 import { runAsync } from '../../helpers';
-import { mutationTypes } from '../mutations/_mutations';
+import { mutationTypes } from '../mutations/_types';
 
 let busyCount = 0;
 

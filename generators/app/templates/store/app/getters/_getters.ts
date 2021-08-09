@@ -1,8 +1,6 @@
-import { AppState } from '../state';
 import { getterTypes } from './_types';
+import getIsAppBusy from './get-is-app-busy';
 
-const getters = {
-  [getterTypes.isAppBusy]: (state: AppState) => state.isBusy,
+export const getters = {
+  [getterTypes.isAppBusy]: getIsAppBusy,
 };
-
-export { getterTypes, getters };
