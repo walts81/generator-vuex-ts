@@ -1,29 +1,22 @@
 'use strict';
-const Generator = require('yeoman-generator');
+const GeneratorBase = require('../generator-base');
 const chalk = require('chalk');
 const yosay = require('yosay');
 
-module.exports = class extends Generator {
+module.exports = class extends GeneratorBase {
+  constructor(args, options) {
+    super(args, options);
+  }
+
   prompting() {
-    // Have Yeoman greet the user.
     this.log(yosay(`Welcome to the awe-inspiring ${chalk.red('generator-vuex')} generator!`));
 
-    const prompts = [
-      // {
-      //   type: 'confirm',
-      //   name: 'someAnswer',
-      //   message: 'Would you like to enable this option?',
-      //   default: true,
-      // },
-    ];
-
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
+    return this.doPrompt([]).then(props => {
       this.props = props;
     });
   }
 
   writing() {
-    this.fs.copy(this.templatePath('store/'), this.destinationPath('src/store/'));
+    this.fs.copy(this.templatePath('store/'), this.destinationPath(this.props.baseDir));
   }
 };
