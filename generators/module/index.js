@@ -7,6 +7,7 @@ const yosay = require('yosay');
 const updateActionTypes = require('./update-action-types');
 const updateGetterTypes = require('./update-getter-types');
 const updateMutationTypes = require('./update-mutation-types');
+const updateModels = require('./update-models');
 const updateModules = require('./update-modules');
 const updateRootState = require('./update-root-state');
 
@@ -30,6 +31,9 @@ module.exports = class extends GeneratorBase {
       props.moduleNameTitle = _.camelize(props.moduleName);
       props.moduleNameSlug = _.slugify(props.moduleName);
       this.props = props;
+      if (this.modules.indexOf(props.moduleNameSlug) > -1) {
+        throw new Error('You already have a module with that name');
+      }
     });
   }
 
@@ -42,6 +46,7 @@ module.exports = class extends GeneratorBase {
     updateActionTypes(this.fs, temp, this.props);
     updateGetterTypes(this.fs, temp, this.props);
     updateMutationTypes(this.fs, temp, this.props);
+    updateModels(this.fs, temp, this.props);
     updateModules(this.fs, temp, this.props);
     updateRootState(this.fs, temp, this.props);
     this.addModuleToConfig(this.props.moduleNameSlug);
