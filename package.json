@@ -1,6 +1,6 @@
 {
   "name": "@walts81/generator-vuex-ts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Create Vuex modules using TypeScript",
   "homepage": "",
   "author": {
