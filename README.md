@@ -1,4 +1,4 @@
-# generator-vuex-ts [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+# generator-vuex-ts [![Build Status][travis-image]][travis-url]
 
 > Create Vuex modules using TypeScript
 
@@ -8,7 +8,7 @@ First, install [Yeoman](http://yeoman.io) and generator-vuex-ts using [npm](http
 
 ```bash
 npm install -g yo
-npm install -g generator-vuex-ts
+npm install -g @walts81/generator-vuex-ts
 ```
 
 Then generate your new project:
@@ -36,11 +36,11 @@ yo vuex-ts:model
 
 ## License
 
-ISC © [Josh Walters]()
+MIT © [Josh Walters]()
 
-[npm-image]: https://badge.fury.io/js/generator-vuex-ts.svg
-[npm-url]: https://npmjs.org/package/generator-vuex-ts
-[travis-image]: https://travis-ci.com/walts81/generator-vuex-ts.svg?branch=master
-[travis-url]: https://travis-ci.com/walts81/generator-vuex-ts
+[npm-image]: https://badge.fury.io/js/@walts81/generator-vuex-ts.svg
+[npm-url]: https://npmjs.org/package/@walts81/generator-vuex-ts
+[travis-image]: https://app.travis-ci.com/walts81/generator-vuex-ts.svg?branch=master
+[travis-url]: https://app.travis-ci.com/walts81/generator-vuex-ts
 [daviddm-image]: https://david-dm.org/walts81/generator-vuex-ts.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/walts81/generator-vuex-ts

@@ -1,9 +1,25 @@
 language: node_js
 node_js:
-  - v16
-  - v14
-  - v12
-  - v10
-  - v8
-  - v6
-  - v4
+  - 'lts/*'
+install:
+  - npm install
+jobs:
+  include:
+    - stage: Test
+      env:
+        global:
+          - NODE_ENV=development
+      script:
+        - npm test
+    - stage: npm release
+      deploy:
+        provider: npm
+        email: '$NPM_EMAIL'
+        api_key: '$NPM_TOKEN'
+        skip_cleanup: true
+        on:
+          tags: true
+branches:
+  only:
+    - master
+    - /^v[0-9]+.*$/
