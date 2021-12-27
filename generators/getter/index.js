@@ -13,7 +13,7 @@ module.exports = class extends GeneratorBase {
       name: 'getterType',
       message: 'Is this a simple getter or advanced?',
       choices: ['Simple', 'Advanced'],
-      default: 'Simple'
+      default: 'Simple',
     });
   }
 
@@ -22,9 +22,7 @@ module.exports = class extends GeneratorBase {
   }
 
   getTemplateFile() {
-    const name = this.props.getterType === 'Advanced'
-      ? 'getter-adv.ts'
-      : 'getter.ts';
+    const name = this.props.getterType === 'Advanced' ? 'getter-adv.ts' : 'getter.ts';
     return this.templatePath(name);
   }
 
