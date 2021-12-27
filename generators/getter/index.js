@@ -15,6 +15,7 @@ module.exports = class extends GeneratorBase {
       choices: ['Simple', 'Advanced'],
       default: 'Simple',
     });
+    return prompts;
   }
 
   prompting() {
