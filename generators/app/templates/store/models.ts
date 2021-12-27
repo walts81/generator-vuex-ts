@@ -1,1 +1,1 @@
-export * from './app/models/_models';
+export * from './app/models';

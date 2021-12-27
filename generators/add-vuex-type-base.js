@@ -14,9 +14,7 @@ module.exports = class extends GeneratorBase {
     this.type = type;
   }
 
-  prompting() {
-    this.log(yosay(`Welcome to the most-excellent ${chalk.red(`generator-vuex:add-${this.type}`)} sub-generator!`));
-
+  getPrompts() {
     const prompts = [
       {
         type: 'list',
@@ -39,6 +37,13 @@ module.exports = class extends GeneratorBase {
         choices: ['string', 'boolean', 'number', 'any'],
       });
     }
+    return prompts;
+  }
+
+  prompting() {
+    this.log(yosay(`Welcome to the most-excellent ${chalk.red(`generator-vuex:add-${this.type}`)} sub-generator!`));
+
+    const prompts = this.getPrompts();
 
     return this.doPrompt(prompts).then(props => {
       setNames(props, 'moduleName');
@@ -47,11 +52,16 @@ module.exports = class extends GeneratorBase {
     });
   }
 
+  getTemplateFile() {
+    return this.templatePath(`${this.type}.ts`);
+  }
+
   writing() {
     this.conflicter.force = true;
     const root = path.join(this.props.baseDir, `${this.props.moduleNameSlug}/${this.type}s/`);
+    const template = this.getTemplateFile();
     this.fs.copyTpl(
-      this.templatePath(`${this.type}.ts`),
+      template,
       this.destinationPath(path.join(root, `${this.props.nameSlug}.ts`)),
       this.props
     );

@@ -19,7 +19,7 @@ module.exports = class extends GeneratorBase {
       this.destinationPath(path.join(root, `${props.nameSlug}.ts`)),
       props
     );
-    const temp = this.destinationPath(path.join(root, '_models.ts'));
+    const temp = this.destinationPath(path.join(root, 'index.ts'));
     this.fs.copy(temp, temp, {
       process: function(content) {
         const str = content.toString();
