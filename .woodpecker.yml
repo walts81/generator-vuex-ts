@@ -1,0 +1,22 @@
+steps:
+  build:
+    image: node:18-bullseye-slim
+    environment:
+      - NODE_ENV=development
+    commands:
+      - npm install
+      - npm test
+    when:
+      - event: push
+        branch: master
+  deploy:
+    image: node:18-bullseye-slim
+    environment:
+      - NODE_ENV=production
+    commands:
+      - npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+      - npm publish
+    when:
+      - event: tag
+        branch: master
+        ref: refs/tags/v+([0-9])?(\.)*([0-9])
