@@ -17,6 +17,7 @@ steps:
     commands:
       - npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
       - npm publish
+    secrets: [NPM_TOKEN]
     depends_on: [test]
     when:
       - event: tag
