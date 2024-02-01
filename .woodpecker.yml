@@ -1,5 +1,5 @@
 steps:
-  build:
+  test:
     image: node:18-bullseye-slim
     environment:
       - NODE_ENV=development
@@ -9,6 +9,7 @@ steps:
     when:
       - event: push
         branch: master
+      - evaluate: 'MANUAL_BUILD == "true"'
   deploy:
     image: node:18-bullseye-slim
     environment:
@@ -16,6 +17,7 @@ steps:
     commands:
       - npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
       - npm publish
+    depends_on: [test]
     when:
       - event: tag
         branch: master
